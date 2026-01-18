@@ -1,0 +1,429 @@
+/* Global Design System */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Open+Sans:wght@400;600&display=swap');
+
+:root {
+    --color-primary: #2D3748;
+    --color-accent: #00C853;
+    --bg-problem: #FFF5F5;
+    --bg-solution: #FFFFFF;
+    --bg-product: #E6FFFA;
+    --bg-social: #F7FAFC;
+    --font-headline: 'Montserrat', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--color-primary);
+    background-color: #FFFFFF;
+}
+
+h1, h2, h3, h4, h5, h6, .elementor-heading-title {
+    font-family: var(--font-headline) !important;
+    color: #1A202C;
+}
+
+/* Button Global Restyle */
+.elementor-button, .plano-botao-basico, .video-cta-button {
+    font-family: var(--font-headline) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 3px 0 rgba(0,0,0,0.1) !important;
+    transition: all 0.2s ease-in-out !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.elementor-button:hover, .plano-botao-basico:hover, .video-cta-button:hover {
+    transform: scale(1.05);
+    filter: brightness(1.05);
+}
+
+/* Hero Section */
+/* Assuming the first section container or the one containing the specific headline */
+[data-id="656f7973"] h2.elementor-heading-title {
+    font-size: 3.5rem !important; /* Desktop */
+    line-height: 1.1 !important;
+    color: #1A202C !important;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    [data-id="656f7973"] h2.elementor-heading-title {
+        font-size: 2rem !important;
+    }
+}
+
+/* Highlighter Effect for 'método americano' */
+[data-id="656f7973"] h2 b:nth-of-type(2) {
+    background: linear-gradient(120deg, #FFF176 0%, #FFF176 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 40%;
+    background-position: 0 88%;
+    padding: 0 5px;
+}
+
+/* Video Container Shadow */
+#vsl-container-772 {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+    border: 4px solid #fff;
+    border-radius: 12px !important;
+}
+
+/* Problem Agitation Section */
+[data-id="5927e83"] {
+    background-color: var(--bg-problem) !important;
+    background-image: none !important; /* Remove old textures */
+    padding-top: 60px;
+    padding-bottom: 0px;
+}
+
+[data-id="5927e83"] .e-con-inner {
+    border-left: none !important;
+    padding-left: 0px;
+}
+
+[data-id="52f9a79f"], [data-id="27c5a6f8"] {
+    text-align: left !important;
+}
+
+[data-id="52f9a79f"] h2 {
+    color: #C53030 !important; /* Dark Red for problem headline */
+}
+
+/* Solution Reveal Section */
+[data-id="413f83d7"] {
+    background-color: var(--bg-solution) !important;
+    padding: 10px 0 !important;
+}
+
+[data-id="3013f098"] h3 {
+    font-size: 2rem !important;
+    color: #2D3748;
+}
+
+/* Product Introduction Section */
+[data-id="a24db8b"] {
+    background-color: var(--bg-product) !important;
+    background-image: none !important;
+}
+
+[data-id="7fea2ce8"] h2 {
+    color: #2C7A7B !important; /* Teal Dark */
+    text-align: center;
+}
+
+/* Lift Effect for Product Image */
+[data-id="3169237a"] img {
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.15));
+    transform: translateY(-5px);
+    transition: transform 0.3s ease;
+}
+
+/* Benefits Grid */
+[data-id="1a86cb7a"] ul.elementor-icon-list-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 10px;
+}
+
+[data-id="1a86cb7a"] li.elementor-icon-list-item {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+}
+
+[data-id="1a86cb7a"] .elementor-icon-list-icon svg {
+    fill: var(--color-accent) !important;
+    width: 24px;
+    height: 24px;
+}
+
+/* Social Proof Section */
+[data-id="1fe2c23f"] {
+    background-color: var(--bg-social) !important;
+    padding-top: 60px !important;
+    padding-bottom: 0px !important;
+}
+
+/* Facebook Comments Container Styling */
+.fb-comments-comment {
+    background: #fff !important;
+    border-radius: 12px !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05) !important;
+    border: none !important;
+    padding: 20px !important;
+    margin-bottom: 20px !important;
+}
+
+.fb-comments-comment-img img {
+    border-radius: 50% !important;
+}
+
+/* Offer Stack Section */
+[data-id="62b57609"] {
+    background-color: #fff;
+}
+
+[data-id="2e7441a7"] { /* Assuming this wraps the stack content */
+    max-width: 700px;
+    margin: 0 auto;
+    border: 2px dashed #CBD5E0;
+    border-radius: 16px;
+    padding: 40px;
+    background: #FAFAFA;
+}
+
+/* Stack List Typography */
+[data-id="a484a87"] p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #E2E8F0;
+    padding: 10px 0;
+    margin: 0;
+}
+
+[data-id="a484a87"] span[style*="color: #ff0000"] {
+    font-weight: bold;
+    color: #E53E3E !important;
+}
+
+/* Pricing CTA Section */
+[data-id="32886c38"] {
+    background: linear-gradient(135deg, #E6FFFA 0%, #B2F5EA 100%) !important;
+    padding-top: 20px !important;
+    padding-bottom: 0px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    /* GUILLOTINE FIX: Force collapse */
+    height: auto !important;
+    min-height: 0px !important;
+    max-height: none !important;
+    display: block !important;
+}
+
+/* Flexbox Layout for Offer Stack and Pricing Card - STRICT FIX */
+/* Parent Container for both cards */
+[data-id="7fd0e03a"] > .e-con-inner {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: flex-start !important; /* Force items to top/start */
+    align-items: flex-start !important;
+    gap: 0px !important; /* Kill gaps to allow manual spacing */
+    max-width: 1100px !important;
+    margin: 0 auto !important;
+    position: relative !important;
+    padding-top: 0px !important;
+    margin-top: 0px !important;
+    padding-bottom: 0px !important;
+    /* Disable Flex Stretch */
+    flex-grow: 0 !important;
+    align-self: flex-start !important;
+}
+
+/* Hide hidden spacers */
+.elementor-spacer, .elementor-divider, br {
+    display: none !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Text "Recapitulando..." above cards */
+[data-id="f0bb95f"] {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0px !important;
+    margin-top: 0px !important;
+    padding-bottom: 0px !important;
+    z-index: 5;
+    position: relative;
+    /* Removed transform here to let arrow do the heavy lifting or keep gentle */
+    transform: translateY(-5px) !important;
+}
+
+/* Target the arrow icon container */
+[data-id="2d47b488"] {
+    display: block !important;
+    width: fit-content !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important; /* Zero out bottom margin */
+    padding-bottom: 0px !important;
+    padding: 0px !important;
+    line-height: 1 !important;
+    height: auto !important;
+    z-index: 10 !important;
+    position: relative !important;
+    transform: translateY(-25px) !important; /* FORCE UP */
+}
+
+/* Desktop Layout Fix for Pricing Cards */
+@media (min-width: 901px) {
+    /* Container principal da oferta */
+    [data-id="7fd0e03a"] > .e-con-inner {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 40px !important;
+        padding-top: 40px !important;
+        margin-top: 0 !important;
+        max-width: 1200px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    /* Reset margins and positions specifically for desktop */
+    [data-id="plano-basico"], [data-id="c525be0"] {
+        margin: 0 !important;
+        top: 0 !important;
+        width: auto !important;
+        max-width: 450px !important;
+        flex: 1 1 0 !important;
+        position: relative !important;
+        background-color: #ffffff !important;
+    }
+
+    /* Destaque para o Premium */
+    [data-id="c525be0"] {
+        transform: scale(1.1) !important;
+        z-index: 10 !important;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+        border: 2px solid var(--color-accent) !important;
+        border-radius: 16px !important;
+    }
+    
+    /* Normal para o Básico */
+    [data-id="plano-basico"] {
+        transform: none !important;
+        z-index: 1 !important;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
+        border: 1px solid #E2E8F0 !important;
+        border-radius: 12px !important;
+    }
+}
+
+/* Ajuste da Seta no Desktop */
+@media (min-width: 901px) {
+    [data-id="2d47b488"] {
+        display: none !important; /* Ocultar seta no desktop se não fizer sentido layout lado a lado */
+    }
+}
+
+/* Mobile Layout Preserved - Mantendo exatamente como o usuário gostou */
+@media (max-width: 900px) {
+    /* Arrow Adjustment Mobile */
+    [data-id="2d47b488"] {
+        display: block !important;
+        width: fit-content !important;
+        margin: 0 auto !important;
+        z-index: 20 !important;
+        order: 0 !important;
+        margin-bottom: -30px !important;
+    }
+
+    [data-id="7fd0e03a"] > .e-con-inner {
+        flex-direction: column !important;
+        gap: 30px !important;
+    }
+
+    /* Remove ordering rules to let them stack naturally or apply specific order if needed. 
+       Instruction says: "Put Price Card ON TOP" (column-reverse) or "Price Card on bottom" (column). 
+       Assuming "Price Card on bottom" based on natural flow for now, or column-reverse if urgency implies buying first.
+       Let's stick to column-reverse as it often converts better on mobile for direct response.
+    */
+    [data-id="7fd0e03a"] > .e-con-inner {
+        flex-direction: column !important; /* Stack normally: Title -> Card 1 -> Card 2 */
+    }
+    
+    /* Order: Title (default 0), Card 1 (1), Card 2 (2) */
+    /* If title is inside the same flex container, it needs width 100% and order 0 */
+    
+    [data-id="f0bb95f"] {
+        order: 0 !important;
+    }
+
+    [data-id="plano-basico"] {
+        order: 2 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        flex: auto !important;
+    }
+
+    [data-id="c525be0"] {
+        order: 1 !important; /* Price on top? Or Title -> Price -> List? */
+        /* User said: "esse texto e essa seta, devem ficar encima dos cards de preço" 
+           Usually implies Title Top.
+           And previously requested "Mobile: empilhados, com Premium em cima e Start/Básico embaixo".
+           Premium = c525be0. Start = plano-basico.
+           So: Title (0) -> Premium (1) -> Start (2).
+        */
+        width: 100% !important;
+        max-width: 100% !important;
+        flex: auto !important;
+        margin-top: -20px !important; /* Pull up towards arrow */
+    }
+}
+
+/* Pricing Card (Basic/Start) - overriding previous inline styles */
+[data-id="plano-basico"] {
+    background: #fff !important;
+    border-radius: 12px !important;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+    border: none !important;
+}
+
+/* Premium Card */
+[data-id="c525be0"] {
+    transform: scale(1.05);
+    z-index: 10;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+}
+
+/* Price Typography */
+.plano-basico-preco h2:before, [data-id="690cd9ac"] h2 {
+    font-size: 4rem !important;
+    font-weight: 900 !important;
+    color: #2D3748 !important;
+}
+
+/* CTA Button Styling override */
+.plano-botao-basico, .video-cta-button, [data-id="944d339"] .elementor-button {
+    background: #F6AD55 !important; /* Orange */
+    color: #fff !important;
+    font-weight: 900 !important;
+    box-shadow: 0 4px 14px 0 rgba(246, 173, 85, 0.39) !important;
+}
+
+.plano-botao-basico:hover, .video-cta-button:hover, [data-id="944d339"] .elementor-button:hover {
+    background: #ED8936 !important;
+    transform: translateY(-2px);
+}
+
+/* Guarantee Badge */
+[data-id="45d6fbf0"] {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Layout Inversion Directive - Enforce Text Above Image */
+[data-id="196acc46"] {
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+[data-id="3169237a-text"] {
+    order: 1 !important;
+    margin-bottom: 20px !important;
+}
+
+[data-id="3169237a-img"] {
+    order: 2 !important;
+    margin-top: 0px !important;
+}
