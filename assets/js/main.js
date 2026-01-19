@@ -203,29 +203,33 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    const basicButton = document.querySelector('.plano-botao-basico');
-    const upsellOverlay = document.getElementById('upsell-overlay');
-    const upsellClose = upsellOverlay ? upsellOverlay.querySelector('.upsell-close') : null;
-
-    if (basicButton && upsellOverlay) {
-        basicButton.addEventListener('click', function (e) {
-            e.preventDefault();
-            e.stopImmediatePropagation();
-            upsellOverlay.classList.add('is-visible');
-        });
-
-        upsellOverlay.addEventListener('click', function (e) {
-            if (e.target === upsellOverlay) {
-                upsellOverlay.classList.remove('is-visible');
+    // Upsell Popup Logic (Delegated Event Handling)
+    document.addEventListener('click', function (e) {
+        // 1. Open Popup (Click on Basic Button)
+        const basicBtn = e.target.closest('.plano-botao-basico');
+        if (basicBtn) {
+            e.preventDefault(); // Prevent navigation to checkout
+            e.stopPropagation();
+            const overlay = document.getElementById('upsell-overlay');
+            if (overlay) {
+                overlay.classList.add('is-visible');
             }
-        });
-
-        if (upsellClose) {
-            upsellClose.addEventListener('click', function () {
-                upsellOverlay.classList.remove('is-visible');
-            });
+            return;
         }
-    }
+
+        // 2. Close Popup (Click on Overlay background or Close button)
+        const overlay = document.getElementById('upsell-overlay');
+        if (overlay && overlay.classList.contains('is-visible')) {
+            // Close if clicked on the overlay background (outside modal)
+            if (e.target === overlay) {
+                overlay.classList.remove('is-visible');
+            }
+            // Close if clicked on the X button
+            if (e.target.closest('.upsell-close')) {
+                overlay.classList.remove('is-visible');
+            }
+        }
+    });
 
     const basicList = document.querySelector('[data-id="plano-basico"] .plano-basico-lista');
     if (basicList) {
