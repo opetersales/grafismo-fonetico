@@ -210,6 +210,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (basicBtn) {
             e.preventDefault(); // Prevent navigation to checkout
             e.stopPropagation();
+            e.stopImmediatePropagation();
+            console.log('Basic button clicked - Popup triggered');
+            
             const overlay = document.getElementById('upsell-overlay');
             if (overlay) {
                 overlay.classList.add('is-visible');
