@@ -124,10 +124,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const videoElementor = document.querySelector('#video .elementor-widget-container');
     if (videoElementor) {
         videoElementor.innerHTML = `
-<div id="vsl-container-772" style="position: relative; width: 100%; max-width: 400px; margin: 20px auto 16px; aspect-ratio: 9/16; background: #000; border-radius: 15px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.5); font-family: sans-serif;">
-    <video id="vsl-video" autoplay muted playsinline onclick="togglePlay()" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;">
-        <source src="https://nustzeypnuplleahybfn.supabase.co/storage/v1/object/public/VSL/vsl.mp4" type="video/mp4">
-    </video>
+<div id="vsl-container-772" style="position: relative; width: 100%; max-width: 400px; margin: 20px auto 16px; background: #000; border-radius: 15px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.5); font-family: sans-serif;">
+    <div id="vsl-wrapper" style="position: relative; width: 100%; height: 0; padding-top: 177.7778%;">
+        <video id="vsl-video" autoplay muted playsinline onclick="togglePlay()" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; cursor: pointer;">
+            <source id="vsl-source" src="https://nustzeypnuplleahybfn.supabase.co/storage/v1/object/public/VSL/vsl.mp4" type="video/mp4">
+        </video>
+    </div>
     <div id="vsl-overlay" onclick="primeiroClique()" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 30;">
         <div style="background: #2563eb; color: white; padding: 15px 25px; border-radius: 50px; font-weight: bold; font-size: 16px; box-shadow: 0 4px 15px #2563eb66;">
             🔊 CLIQUE PARA OUVIR
@@ -160,13 +162,42 @@ document.addEventListener('DOMContentLoaded', () => {
             vslVideo.addEventListener('ended', () => {
                 progressBar.style.width = '100%';
             });
+            vslVideo.addEventListener('error', () => {
+                // Fallback: habilita controles e mostra mensagem com link direto
+                vslVideo.controls = true;
+                const overlay = document.getElementById('vsl-overlay');
+                if (overlay) {
+                    overlay.style.display = 'none';
+                }
+                const src = (document.getElementById('vsl-source') || {}).src || '';
+                const msg = document.createElement('div');
+                msg.style.cssText = 'position:absolute;top:12px;left:12px;right:12px;padding:10px;border-radius:8px;background:rgba(0,0,0,0.6);color:#fff;font-size:12px;z-index:40;';
+                msg.textContent = 'Não foi possível iniciar automaticamente. Toque no ▶️ ou ';
+                const link = document.createElement('a');
+                link.href = src;
+                link.textContent = 'abra o vídeo em outra aba';
+                link.style.color = '#93c5fd';
+                link.target = '_blank';
+                msg.appendChild(document.createTextNode(' '));
+                msg.appendChild(link);
+                const wrapper = document.getElementById('vsl-wrapper');
+                if (wrapper) {
+                    wrapper.appendChild(msg);
+                }
+            });
             window.primeiroClique = function () {
                 if (!vslVideo) {
                     return;
                 }
                 vslVideo.muted = false;
                 vslVideo.currentTime = 0;
-                vslVideo.play();
+                const playResult = vslVideo.play();
+                if (playResult && typeof playResult.catch === 'function') {
+                    playResult.catch(() => {
+                        // Alguns navegadores exigem interação adicional para áudio: exibir controles
+                        vslVideo.controls = true;
+                    });
+                }
                 const overlay = document.getElementById('vsl-overlay');
                 if (overlay) {
                     overlay.style.display = 'none';
@@ -177,7 +208,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     return;
                 }
                 if (vslVideo.paused) {
-                    vslVideo.play();
+                    const pr = vslVideo.play();
+                    if (pr && typeof pr.catch === 'function') {
+                        pr.catch(() => {
+                            vslVideo.controls = true;
+                        });
+                    }
                 } else {
                     vslVideo.pause();
                 }
