@@ -203,36 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Upsell Popup Logic (Delegated Event Handling)
-    document.addEventListener('click', function (e) {
-        // 1. Open Popup (Click on Basic Button)
-        const basicBtn = e.target.closest('.plano-botao-basico');
-        if (basicBtn) {
-            e.preventDefault(); // Prevent navigation to checkout
-            e.stopPropagation();
-            e.stopImmediatePropagation();
-            console.log('Basic button clicked - Popup triggered');
-            
-            const overlay = document.getElementById('upsell-overlay');
-            if (overlay) {
-                overlay.classList.add('is-visible');
-            }
-            return;
-        }
 
-        // 2. Close Popup (Click on Overlay background or Close button)
-        const overlay = document.getElementById('upsell-overlay');
-        if (overlay && overlay.classList.contains('is-visible')) {
-            // Close if clicked on the overlay background (outside modal)
-            if (e.target === overlay) {
-                overlay.classList.remove('is-visible');
-            }
-            // Close if clicked on the X button
-            if (e.target.closest('.upsell-close')) {
-                overlay.classList.remove('is-visible');
-            }
-        }
-    });
 
     const basicList = document.querySelector('[data-id="plano-basico"] .plano-basico-lista');
     if (basicList && !basicList.getAttribute('data-updated')) {
