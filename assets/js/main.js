@@ -235,7 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const basicList = document.querySelector('[data-id="plano-basico"] .plano-basico-lista');
-    if (basicList) {
+    if (basicList && !basicList.getAttribute('data-updated')) {
         basicList.innerHTML =
             '<p>✅ 50 Atividades de Grafismo (Nível 1 apenas)</p>' +
             '<p>✅ Arquivos em PDF para imprimir</p>' +
@@ -243,6 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
             '<p>❌ SEM os 6 Cadernos de Bônus</p>' +
             '<p>❌ SEM o Kit de Alfabetização</p>' +
             '<p>❌ SEM Suporte Prioritário</p>';
+        basicList.setAttribute('data-updated', 'true');
     }
 
 });
