@@ -239,6 +239,42 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Modal Oferta Premium
+    const basicButton = document.querySelector('.plano-botao-basico');
+    const premiumModal = document.getElementById('premiumModal');
+    const closeBtn = document.querySelector('.close-modal');
+    const acceptPremium = document.getElementById('acceptPremium');
+    const declinePremium = document.getElementById('declinePremium');
+
+    if (basicButton && premiumModal) {
+        basicButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            premiumModal.style.display = 'block';
+        });
+
+        if (closeBtn) {
+            closeBtn.onclick = () => premiumModal.style.display = 'none';
+        }
+        
+        window.onclick = (event) => {
+            if (event.target == premiumModal) {
+                premiumModal.style.display = 'none';
+            }
+        };
+
+        if (acceptPremium) {
+            acceptPremium.addEventListener('click', () => {
+                window.location.href = 'https://pay.lowify.com.br/go.php?offer=fk0en9w';
+            });
+        }
+
+        if (declinePremium) {
+            declinePremium.addEventListener('click', () => {
+                window.location.href = 'https://pay.lowify.com.br/checkout?product_id=LPd4aV';
+            });
+        }
+    }
+
 
 
     const basicList = document.querySelector('[data-id="plano-basico"] .plano-basico-lista');
